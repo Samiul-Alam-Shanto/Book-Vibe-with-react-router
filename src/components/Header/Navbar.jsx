@@ -7,7 +7,7 @@ const Navbar = () => {
 
   const links = (
     <>
-      <NavLink to={"/"} className={activeStyle}>
+      <NavLink to="/" className={activeStyle}>
         Home
       </NavLink>
       <NavLink className={activeStyle}>Latest Books</NavLink>
