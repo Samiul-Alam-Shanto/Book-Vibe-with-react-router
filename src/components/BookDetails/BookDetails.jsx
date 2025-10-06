@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
+import { addToStoreLS } from "../../utilities/addToLS";
 
 const BookDetails = () => {
   const data = useLoaderData();
@@ -19,7 +20,16 @@ const BookDetails = () => {
     image,
     tags,
   } = singleBook;
-  console.log(singleBook);
+  // console.log(singleBook);
+
+  const handleMarkAsRead = (id) => {
+    //store with id
+    //where to store(database or local storage )
+    // array or collection
+    // if book already exists show an alert
+    // if book not exist then push in the collection or array
+    addToStoreLS(id);
+  };
   return (
     <div className="flex flex-col gap-5 lg:flex-row bg-base-100 items-center shadow-sm container mx-auto my-5 p-2">
       <figure className="flex-1 p-12 bg-gray-200 rounded-2xl mx-auto">
@@ -68,8 +78,12 @@ const BookDetails = () => {
         </div>
 
         <div className="card-actions ">
-          <button className="btn  ">Read</button>
-          <button className="btn bg-[#50B1C9] text-white">WishList</button>
+          <button onClick={() => handleMarkAsRead(numId)} className="btn">
+            Mark as Read
+          </button>
+          <button className="btn bg-[#50B1C9] text-white">
+            Add to WishList
+          </button>
         </div>
       </div>
     </div>

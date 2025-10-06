@@ -10,7 +10,9 @@ const Navbar = () => {
       <NavLink to="/" className={activeStyle}>
         Home
       </NavLink>
-      <NavLink className={activeStyle}>Latest Books</NavLink>
+      <NavLink to="/latest-books" className={activeStyle}>
+        Latest Books
+      </NavLink>
       <NavLink className={activeStyle}>Pages to Read</NavLink>
     </>
   );
