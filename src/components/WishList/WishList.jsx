@@ -2,7 +2,7 @@ import { BookOpen, FileChartColumnIncreasing, MapPin } from "lucide-react";
 import React from "react";
 import { Link } from "react-router";
 
-const ReadList = ({ singleBook }) => {
+const WishList = ({ wishBook }) => {
   const {
     bookId,
     bookName,
@@ -14,7 +14,7 @@ const ReadList = ({ singleBook }) => {
     tags,
     totalPages,
     yearOfPublishing,
-  } = singleBook;
+  } = wishBook;
   return (
     <div className="flex flex-col lg:flex-row gap-5 my-5  border p-5 rounded-2xl">
       <figure className="bg-gray-300 p-10 rounded-2xl ">
@@ -68,4 +68,4 @@ const ReadList = ({ singleBook }) => {
   );
 };
 
-export default ReadList;
+export default WishList;

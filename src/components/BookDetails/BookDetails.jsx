@@ -1,6 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
-import { addToStoreLS } from "../../utilities/addToLS";
+import { addToStoreLS, addToWishLS } from "../../utilities/addToLS";
 
 const BookDetails = () => {
   const data = useLoaderData();
@@ -29,6 +29,10 @@ const BookDetails = () => {
     // if book already exists show an alert
     // if book not exist then push in the collection or array
     addToStoreLS(id);
+  };
+
+  const handleWishList = (id) => {
+    addToWishLS(id);
   };
   return (
     <div className="flex flex-col gap-5 lg:flex-row bg-base-100 items-center shadow-sm container mx-auto my-5 p-2">
@@ -81,7 +85,10 @@ const BookDetails = () => {
           <button onClick={() => handleMarkAsRead(numId)} className="btn">
             Mark as Read
           </button>
-          <button className="btn bg-[#50B1C9] text-white">
+          <button
+            onClick={() => handleWishList(numId)}
+            className="btn bg-[#50B1C9] text-white"
+          >
             Add to WishList
           </button>
         </div>

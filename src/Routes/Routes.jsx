@@ -4,6 +4,7 @@ import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home";
 import BookDetails from "../components/BookDetails/BookDetails";
 import LatestBooks from "../components/LatestBooks/LatestBooks";
+import PagesChart from "../pages/PagesChart/PagesChart";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
         path: "/latest-books",
         loader: () => fetch("/booksData.json"),
         Component: LatestBooks,
+      },
+      {
+        path: "/pages-to-read",
+        Component: PagesChart,
       },
     ],
   },

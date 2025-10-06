@@ -13,7 +13,9 @@ const Navbar = () => {
       <NavLink to="/latest-books" className={activeStyle}>
         Latest Books
       </NavLink>
-      <NavLink className={activeStyle}>Pages to Read</NavLink>
+      <NavLink to="/pages-to-read" className={activeStyle}>
+        Pages to Read
+      </NavLink>
     </>
   );
   return (

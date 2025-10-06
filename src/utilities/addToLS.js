@@ -20,4 +20,25 @@ const addToStoreLS = (id) => {
   }
 };
 
-export { addToStoreLS, getStoredBook };
+const getWishBook = () => {
+  const wishBookSTR = localStorage.getItem("wishList");
+
+  if (wishBookSTR) {
+    const wishBookData = JSON.parse(wishBookSTR);
+    return wishBookData;
+  } else {
+    return [];
+  }
+};
+
+const addToWishLS = (id) => {
+  const storedData = getWishBook();
+  if (storedData.includes(id)) {
+    alert("already exists");
+  } else {
+    storedData.push(id);
+    const newStoredData = JSON.stringify(storedData);
+    localStorage.setItem("wishList", newStoredData);
+  }
+};
+export { addToStoreLS, getStoredBook, getWishBook, addToWishLS };

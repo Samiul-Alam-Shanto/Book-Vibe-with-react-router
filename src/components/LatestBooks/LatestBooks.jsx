@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
-import { getStoredBook } from "../../utilities/addToLS";
+import { getStoredBook, getWishBook } from "../../utilities/addToLS";
 import ReadList from "../ReadList/ReadList";
+import WishList from "../WishList/WishList";
 
 const LatestBooks = () => {
   const [readList, setReadList] = useState([]);
+  const [wishList, setWishList] = useState([]);
   const allBooks = useLoaderData();
   //   console.log(allBooks);
 
@@ -18,6 +20,15 @@ const LatestBooks = () => {
     setReadList(myReadList);
   }, []);
 
+  useEffect(() => {
+    const storedWishData = getWishBook();
+    // console.log(storedWishData);
+    const myWishList = allBooks.filter((wishBook) =>
+      storedWishData.includes(wishBook.bookId)
+    );
+    setWishList(myWishList);
+  }, []);
+
   return (
     <div className="container mx-auto my-5">
       <div className="tabs tabs-lift">
@@ -26,6 +37,7 @@ const LatestBooks = () => {
           name="my_tabs_3"
           className="tab"
           aria-label="Read List"
+          defaultChecked
         />
         <div className="tab-content bg-base-100 border-base-300 p-6">
           {readList.map((singleBook) => (
@@ -41,10 +53,11 @@ const LatestBooks = () => {
           name="my_tabs_3"
           className="tab"
           aria-label="Wish List"
-          defaultChecked
         />
         <div className="tab-content bg-base-100 border-base-300 p-6">
-          Tab content 2
+          {wishList.map((wishBook) => (
+            <WishList key={wishBook.bookId} wishBook={wishBook}></WishList>
+          ))}
         </div>
       </div>
     </div>
