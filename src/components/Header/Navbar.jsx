@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   const activeStyle = ({ isActive }) =>
@@ -46,7 +46,9 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl font-bold">BookVibe</a>
+        <Link to="/">
+          <button className="btn btn-ghost text-xl font-bold">BookVibe</button>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         {" "}

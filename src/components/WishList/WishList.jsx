@@ -1,8 +1,15 @@
 import { BookOpen, FileChartColumnIncreasing, MapPin } from "lucide-react";
 import React from "react";
 import { Link } from "react-router";
+import { getWishBook } from "../../utilities/addToLS";
 
-const WishList = ({ wishBook }) => {
+const WishList = ({ wishBook, setWishList }) => {
+  const handleRemove = (id) => {
+    const newWishList = getWishBook();
+    const updatedWishList = newWishList.filter((book) => book !== id);
+    localStorage.setItem("wishList", JSON.stringify(updatedWishList));
+    setWishList(updatedWishList);
+  };
   const {
     bookId,
     bookName,
@@ -21,7 +28,15 @@ const WishList = ({ wishBook }) => {
         <img className="w-52 mx-auto" src={image} alt="" />
       </figure>
       <div className="w-full">
-        <h2 className="text-4xl font-bold">{bookName}</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-4xl font-bold">{bookName}</h2>
+          <button
+            className="cursor-pointer"
+            onClick={() => handleRemove(bookId)}
+          >
+            ❌
+          </button>
+        </div>
         <p className="my-5 font-medium">By : {author}</p>
 
         <div className="flex flex-wrap gap-5">

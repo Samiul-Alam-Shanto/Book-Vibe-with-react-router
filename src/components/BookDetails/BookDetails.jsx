@@ -83,7 +83,7 @@ const BookDetails = () => {
 
         <div className="card-actions ">
           <button onClick={() => handleMarkAsRead(numId)} className="btn">
-            Mark as Read
+            Add To ReadList
           </button>
           <button
             onClick={() => handleWishList(numId)}

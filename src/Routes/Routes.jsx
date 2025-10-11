@@ -30,6 +30,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/pages-to-read",
+        loader: () => fetch("/booksData.json"),
         Component: PagesChart,
       },
     ],
